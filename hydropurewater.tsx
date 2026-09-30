@@ -305,45 +305,47 @@ export default function App() {
             <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-sm border border-slate-200 mb-3 text-[#0ea5e9]">
               <ShoppingCart size={24} />
             </div>
-            <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">Kategori & Harga</h2>
+            <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">Katalog & Harga</h2>
             <p className="text-slate-500 text-sm mt-2 max-w-[90%]">Pilih jenis air minum sesuai kebutuhan keluarga Anda dengan harga yang terjangkau.</p>
           </div>
 
-          <div className="grid grid-cols-2 gap-3.5">
+          <div className="flex flex-col gap-3.5">
             {pageData.catalog.map((item, idx) => (
               <div 
                 key={idx} 
-                className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm hover:border-sky-400 hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group"
+                className="bg-white p-4 rounded-2xl border border-slate-200/90 shadow-sm hover:border-sky-400 hover:shadow-md transition-all flex items-center gap-4 cursor-pointer group"
                 onClick={scrollToForm}
               >
-                <div>
-                  <div className="flex justify-between items-start mb-3">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110 duration-300 ${
-                      item.icon === 'Droplet' ? 'bg-sky-50 text-sky-500 border border-sky-100 shadow-sm shadow-sky-100' :
-                      item.icon === 'Zap' ? 'bg-amber-50 text-amber-500 border border-amber-100 shadow-sm shadow-amber-100' :
-                      item.icon === 'PackagePlus' ? 'bg-emerald-50 text-emerald-500 border border-emerald-100 shadow-sm shadow-emerald-100' :
-                      'bg-indigo-50 text-indigo-500 border border-indigo-100 shadow-sm shadow-indigo-100'
-                    }`}>
-                      {item.icon === 'Droplet' && <Droplet size={24} className="fill-current text-sky-500" />}
-                      {item.icon === 'Zap' && <Zap size={24} className="fill-current text-amber-500" />}
-                      {item.icon === 'PackagePlus' && <PackagePlus size={24} className="text-emerald-500" />}
-                      {item.icon === 'RefreshCw' && <RefreshCw size={24} className="text-indigo-500" />}
-                    </div>
-                  </div>
-                  
-                  <h3 className="font-extrabold text-slate-800 text-[14px] leading-snug mb-1.5 group-hover:text-[#0ea5e9] transition-colors">
-                    {item.name}
-                  </h3>
-                  <p className="text-slate-500 text-[11px] leading-relaxed mb-3">
-                    {item.desc}
-                  </p>
+                <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 duration-300 ${
+                  item.icon === 'Droplet' ? 'bg-sky-50 text-sky-500 border border-sky-100 shadow-sm shadow-sky-100' :
+                  item.icon === 'Zap' ? 'bg-amber-50 text-amber-500 border border-amber-100 shadow-sm shadow-amber-100' :
+                  item.icon === 'PackagePlus' ? 'bg-emerald-50 text-emerald-500 border border-emerald-100 shadow-sm shadow-emerald-100' :
+                  'bg-indigo-50 text-indigo-500 border border-indigo-100 shadow-sm shadow-indigo-100'
+                }`}>
+                  {item.icon === 'Droplet' && <Droplet size={26} className="fill-current text-sky-500" />}
+                  {item.icon === 'Zap' && <Zap size={26} className="fill-current text-amber-500" />}
+                  {item.icon === 'PackagePlus' && <PackagePlus size={26} className="text-emerald-500" />}
+                  {item.icon === 'RefreshCw' && <RefreshCw size={26} className="text-indigo-500" />}
                 </div>
 
-                <div className="pt-3 border-t border-slate-100 flex items-center justify-between">
-                  <span className="font-extrabold text-[#0ea5e9] text-[13px] tracking-tight">
-                    {item.price}
-                  </span>
-                  <span className="text-[10px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md group-hover:bg-[#0ea5e9] group-hover:text-white transition-all">
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="font-extrabold text-slate-800 text-[15px] leading-snug group-hover:text-[#0ea5e9] transition-colors truncate">
+                      {item.name}
+                    </h3>
+                  </div>
+                  <p className="text-slate-500 text-xs leading-relaxed mt-0.5">
+                    {item.desc}
+                  </p>
+                  <div className="mt-1.5 flex items-center gap-2">
+                    <span className="font-extrabold text-[#0ea5e9] text-[15px] tracking-tight">
+                      {item.price}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="shrink-0 flex items-center">
+                  <span className="text-xs font-bold text-slate-700 bg-slate-100 group-hover:bg-[#0ea5e9] group-hover:text-white px-3 py-2 rounded-xl transition-all shadow-sm">
                     Pesan
                   </span>
                 </div>
